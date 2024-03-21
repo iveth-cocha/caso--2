@@ -13,7 +13,7 @@ const vehiculosSchema = new Schema({
         required: true,
         trim: true,
     },
-    anioFabricación: {
+    anioFabricacion: {
         type: String,
         required: true,
         trim: true,

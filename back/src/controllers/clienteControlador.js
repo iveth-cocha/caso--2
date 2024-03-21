@@ -16,7 +16,7 @@ const detalleCliente = async(req,res)=>{
 }
 const registrarCliente = async (req, res) => {
         const { cedula, nombre, apellido, ciudad, email, direccion, telefono, fechaNacimiento } = req.body;
-        const nuevoCliente = new Cliente({ cedula, nombre, apellido, ciudad, email, direccion, telefono, fechaNacimiento });
+        const nuevoCliente = new clientes({ cedula, nombre, apellido, ciudad, email, direccion, telefono, fechaNacimiento });
         await nuevoCliente.save();
         res.status(201).json({ mensaje: "Cliente registrado exitosamente", cliente: nuevoCliente });
    
@@ -26,7 +26,7 @@ const actualizarCliente = async(req,res)=>{
     if (Object.values(req.body).includes("")) return res.status(400).json({msg:"Lo sentimos, debes llenar todos los campos"})
     if( !mongoose.Types.ObjectId.isValid(id) ) return res.status(404).json({msg:`Lo sentimos, no existe el cliente ${id}`});
     await clientes.findByIdAndUpdate(req.params.id,req.body)
-    res.status(200).json({msg:"Actualización exitosa del paciente"})
+    res.status(200).json({msg:"Actualización exitosa del cliente"})
 }
 const eliminarCliente = async(req,res)=>{
     const {id} = req.params

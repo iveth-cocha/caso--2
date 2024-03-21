@@ -13,16 +13,15 @@ const reservasSchema = new Schema({
         required: true,
         trim: true,
     },
-    idCliente: {
-        type: Number,
-        required: true,
-        trim: true,
+    idCliente:{
+        type:mongoose.Schema.Types.ObjectId,
+        ref:'clientes'
     },
-    idVehiculo: {
-        type: String,
-        required: true,
-        trim: true,
-    },
+    idVehiculo:{
+        type:mongoose.Schema.Types.ObjectId,
+        ref:'vehiculos'
+    }
+    
     
 },{
     timestamps:true
