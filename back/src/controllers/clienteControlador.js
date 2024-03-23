@@ -12,6 +12,7 @@ const detalleCliente = async(req,res)=>{
     const {id} = req.params
     if( !mongoose.Types.ObjectId.isValid(id) ) return res.status(404).json({msg:`Lo sentimos, no existe el ciente ${id}`});
     const Cliente = await clientes.findById(id).select("-createdAt -updatedAt -__v")
+    
     res.status(200).json(Cliente)
 }
 const registrarCliente = async (req, res) => {

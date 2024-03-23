@@ -30,9 +30,17 @@ const login = async (req, res) => {
         token,
         message: `¡Bienvenido, ${usuarioBD.nombre}!`
     });
+
+
+   
 };
+
+const perfil=(req,res)=>{ 
+    res.status(200).json(req.usuarioBD)
+}
 
 
 export {
     login,
+    perfil
 }

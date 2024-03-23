@@ -1,4 +1,5 @@
-import {Schema, model} from 'mongoose'
+import mongoose, {Schema,model} from 'mongoose'
+//import {Schema, model} from 'mongoose'
 
 
 
@@ -43,6 +44,12 @@ const vehiculosSchema = new Schema({
         required: true,
         trim: true,
     },
+    reservas:[
+        {
+            type:mongoose.Schema.Types.ObjectId,
+            ref:'reservas'
+        }
+    ],
 },{
     timestamps:true
 })

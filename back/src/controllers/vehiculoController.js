@@ -12,10 +12,33 @@ const detalleVehiculos = async (req,res)=>{
     res.status(200).json(Vehiculo)
 }
 const registrarVehiculos = async (req,res)=>{
-    const { marca, modelo, anioFabricacion,placa, color, tipoVehiculo, kilometraje, descripcion } = req.body;
-    const nuevoVehiculo = new vehiculos({ marca, modelo, anioFabricacion, placa, color, tipoVehiculo, kilometraje, descripcion });
-    await nuevoVehiculo.save();
-    res.status(201).json({  mensaje: "Vehículo registrado exitosamente", vehiculo: nuevoVehiculo});
+        // Extraer los datos necesarios de la solicitud
+        const { marca, modelo, anioFabricacion, placa, color, tipoVehiculo, kilometraje, descripcion } = req.body;
+
+        // Verificar si la placa ya está en uso
+        const verificarPlacaVehiculo = await vehiculos.findOne({ placa });
+
+        if (verificarPlacaVehiculo) {
+            return res.status(400).json({ mensaje: "La placa de vehículo ya está registrada" });
+        }
+
+        // Crear una nueva instancia de vehículo utilizando los datos de la solicitud
+        const nuevoVehiculo = new vehiculos({
+            marca,
+            modelo,
+            anioFabricacion,
+            placa,
+            color,
+            tipoVehiculo,
+            kilometraje,
+            descripcion
+        });
+
+        // Guardar el vehículo en la base de datos
+        await nuevoVehiculo.save();
+
+        // Responder al cliente con un mensaje de éxito
+        res.status(201).json({ mensaje: "Vehículo registrado exitosamente", vehiculo: nuevoVehiculo });
 }
 const actualizarVehiculos = async (req,res)=>{
     const {id} = req.params
