@@ -64,12 +64,11 @@ export const FormularioCl = ({cliente}) => {
     }
 
     return (
-
+        
         <form onSubmit={handleSubmit}>
             {Object.keys(mensaje).length > 0 && <Mensaje tipo={mensaje.tipo}>{mensaje.respuesta}</Mensaje>}
             <div>
-                <h1 className='font-black text-4xl text-gray-500'>Agregar Clientes</h1>
-                <hr className='my-4' />
+                
                 <label
                     htmlFor='cedula:'
                     className='text-gray-700 uppercase font-bold text-sm'>Cedula: </label>

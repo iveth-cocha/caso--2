@@ -33,7 +33,7 @@ const TablaVehiculos = () => {
 
     const handleDelete = async (id) => {
         try {
-            const confirmar = confirm("Vas a registrar la salida de un paciente, ¿Estás seguro de realizar esta acción?")
+            const confirmar = confirm("Vas a eliminar un vehiculo, ¿Estás seguro de realizar esta acción?")
             if (confirmar) {
                 const token = localStorage.getItem('token')
                 const url = `${import.meta.env.VITE_BACKEND_URL}/vehiculos/eliminar/${id}`

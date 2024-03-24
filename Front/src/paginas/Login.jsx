@@ -33,7 +33,7 @@ const Login = () => {
 	            const respuesta= await axios.post(url,form)
 	            localStorage.setItem('token',respuesta.data.token)
 	            setAuth(respuesta.data)
-	            navigate('/dashboard')
+	            navigate('/dashboard/clientes')
 	        } catch (error) {
 	            setMensaje({respuesta:error.response.data.msg,tipo:false})
 	            setform({})

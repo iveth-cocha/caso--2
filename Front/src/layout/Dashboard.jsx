@@ -21,9 +21,9 @@ const Dashboard = () => {
 
                 <ul className="mt-5">
 
-                    <li className="text-center">
+                    {/*<li className="text-center">
                         <Link to='/dashboard' className={`${urlActual === '/dashboard' ? 'text-slate-200 bg-gray-900 px-3 py-2 rounded-md text-center' : 'text-slate-600'} text-xl block mt-2 hover:text-slate-600`}>Perfil</Link>
-                    </li>
+    </li>*/}
 
                     <li className="text-center">
                         <Link to='/dashboard/clientes' className={`${urlActual === '/dashboard/clientes' ? 'text-slate-200 bg-gray-900 px-3 py-2 rounded-md text-center' : 'text-slate-600'} text-xl block mt-2 hover:text-slate-600`}>Clientes</Link>
@@ -34,7 +34,7 @@ const Dashboard = () => {
                     </li>
 
                     <li className="text-center">
-                        <Link to='/dashboard/crear' className={`${urlActual === '/dashboard/crear' ? 'text-slate-100 bg-gray-900 px-3 py-2 rounded-md text-center' : 'text-slate-600'} text-xl block mt-2 hover:text-slate-600`}>Crear</Link>
+                        <Link to='/dashboard/reservas' className={`${urlActual === '/dashboard/reservas' ? 'text-slate-100 bg-gray-900 px-3 py-2 rounded-md text-center' : 'text-slate-600'} text-xl block mt-2 hover:text-slate-600`}>Reservas</Link>
                     </li>
                 </ul>
 
@@ -49,7 +49,7 @@ const Dashboard = () => {
                         <img src="https://cdn-icons-png.flaticon.com/512/4715/4715329.png" alt="img-client" className="border-2 border-green-600 rounded-full" width={50} height={50} />
                     </div>
                     <div>
-                        <Link to='/' className=" text-white mr-3 text-md block hover:bg-red-900 text-center
+                        <Link to='/login' className=" text-white mr-3 text-md block hover:bg-red-900 text-center
                         bg-red-800 px-4 py-1 rounded-lg"onClick={()=>{localStorage.removeItem('token')}}>Salir</Link>
                     </div>
                 </div>

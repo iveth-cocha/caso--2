@@ -16,7 +16,12 @@ import { FormularioCl } from './componets/Perfil/FormularioCl'
 import { FormularioVh } from './componets/Perfil/FormularioVh'
 import VisualizarCl from './paginas/VisualizarCl'
 import Visualizar from './paginas/Visualizar'
+import VisualizarRs from './paginas/VisualizarRs'
 import ActualizarCl from './paginas/ActualizarCl'
+import Reservas from './paginas/Reservas'
+import { FormularioRs } from './componets/Perfil/FormularioRs'
+import ModalReserva from './componets/Modals/ModalReserva'
+import ActualizarRs from './paginas/ActualizarRs'
 
 
 
@@ -38,17 +43,22 @@ function App() {
               <PrivateRoute>
                 <Routes>
                   <Route element={<Dashboard />}>
-                    <Route index element={<Perfil />} />
+                    {/*<Route index element={<Perfil />}/>*/}
                     <Route path='clientes' element={<Clientes />} />
                     <Route path='agregarCliente' element={<FormularioCl />} /> 
                     <Route path='visualizarCliente/:id' element={<VisualizarCl />} /> 
                     <Route path='actualizarCliente/:id' element={<ActualizarCl />} />
 
                     <Route path='vehiculos' element={<Vehiculos />} />
-                    <Route path='visualizarVehiculos/:id' element={<Visualizar/>} />  
-                    <Route path='agregarVehiculo' element={<FormularioVh />} />              
-                    <Route path='actualizarVehiculo/:id' element={<Actualizar />} />
-                    <Route path='crear' element={<Crear />} />
+                    <Route path='agregarVehiculo' element={<FormularioVh />} />  
+                    <Route path='visualizarVehiculos/:id' element={<Visualizar/>} />       
+                    <Route path='actualizarVehiculo/:id'element={<Actualizar />} />
+
+                    <Route path='reservas' element={<Reservas />} />
+                    <Route path='agregarReserva' element={<FormularioRs  />} /> 
+                    <Route path='visualizarReserva/:id' element={<VisualizarRs/>} />  
+                    <Route path='actualizarReserva/:id' element={<ActualizarRs/>} />  
+
                    
                   </Route>
                 </Routes>
