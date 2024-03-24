@@ -1,9 +1,9 @@
 import React from 'react'
-import Tabla from '../componets/Tabla'
-import { FormularioCl } from '../componets/Perfil/FormularioCl'
-import { Link } from 'react-router-dom';
+import TablaClientes from '../componets/TablaClientes'
 import { useNavigate } from 'react-router-dom'
-const Listar = () => {
+
+const Clientes = () => {
+   
     const navigate = useNavigate();
 
     
@@ -29,7 +29,7 @@ const Listar = () => {
 
             </div>
             
-            <Tabla/>
+            <TablaClientes/>
             
         </div>
 
@@ -37,4 +37,4 @@ const Listar = () => {
     )
 }
 
-export default Listar
+export default Clientes

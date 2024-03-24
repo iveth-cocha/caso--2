@@ -1,21 +1,21 @@
+import React from 'react'
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import Mensaje from '../componets/Alertas/Mensaje';
 import axios from 'axios';
-import { FormularioVh } from '../componets/Perfil/FormularioVh';
+import { FormularioCl } from '../componets/Perfil/FormularioCl';
 
 
-
-const Actualizar = () => {
+const ActualizarCl = () => {
     const { id } = useParams()
-    const [vehiculo, setVehiculo] = useState({})
+    const [cliente, setCliente] = useState({})
     const [mensaje, setMensaje] = useState({})
 
     useEffect(() => {
-        const consultarVehiculo = async () => {
+        const consultarCliente = async () => {
             try {
                 const token = localStorage.getItem('token')
-                const url = `${import.meta.env.VITE_BACKEND_URL}/vehiculos/${id}`
+                const url = `${import.meta.env.VITE_BACKEND_URL}/clientes/${id}`
                 const options = {
                     headers: {
                         'Content-Type': 'application/json',
@@ -23,23 +23,23 @@ const Actualizar = () => {
                     }
                 }
                 const respuesta = await axios.get(url, options)
-                setVehiculo(respuesta.data)
+                setCliente(respuesta.data)
             } catch (error) {
                 setMensaje({ respuesta: error.response.data.msg, tipo: false })
             }
         }
-        consultarVehiculo()
+        consultarCliente()
     }, [])
 
     return (
         <div>
-            <h1 className='font-black text-4xl text-gray-500'>Actualizar Vehiculo</h1>
+            <h1 className='font-black text-4xl text-gray-500'>Actualizar Cliente</h1>
             <hr className='my-4' />
-            <p className='mb-8'>Este módulo te permite actualizar los datos de un Vehiculo</p>
+            <p className='mb-8'>Este módulo te permite actualizar los daos del cliente</p>
             {
-                Object.keys(vehiculo).length != 0 ?
+                Object.keys(cliente).length != 0 ?
                     (
-                        <FormularioVh vehiculo={vehiculo}/>
+                        <FormularioCl cliente={cliente}/>
                     )
                     :
                     (
@@ -51,4 +51,4 @@ const Actualizar = () => {
     )
 }
 
-export default Actualizar
+export default ActualizarCl

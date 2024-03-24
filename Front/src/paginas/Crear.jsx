@@ -1,5 +1,5 @@
 import React from 'react'
-import { Formulario } from '../componets/Perfil/Formulario'
+//import { Formulario } from '../componets/Perfil/FormularioVh'
 //import { Formulario } from '../../../Formulario'
 
 const Crear = () => {

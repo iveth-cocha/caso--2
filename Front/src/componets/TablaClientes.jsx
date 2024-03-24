@@ -2,10 +2,15 @@ import { useEffect, useState } from "react";
 import { MdDeleteForever, MdNoteAdd, MdInfo } from "react-icons/md";
 import axios from 'axios';
 import Mensaje from "./Alertas/Mensaje";
+import { useNavigate } from 'react-router-dom'
 
 
 
-const Tabla = () => {
+
+const TablaClientes = () => {
+
+    const navigate = useNavigate()
+
     const [clientes, setClientes] = useState([])
  
     const listarClientes = async () => {
@@ -28,6 +33,28 @@ const Tabla = () => {
     useEffect(() => {
         listarClientes()
     }, [])
+
+    const handleDelete = async (id) => {
+        try {
+            const confirmar = confirm("Vas a registrar la salida de un paciente, ¿Estás seguro de realizar esta acción?")
+            if (confirmar) {
+                const token = localStorage.getItem('token')
+                const url = `${import.meta.env.VITE_BACKEND_URL}/cliente/eliminar/${id}`
+                const headers= {
+                        'Content-Type': 'application/json',
+                        Authorization: `Bearer ${token}`
+                    }
+                const data ={
+                    salida:new Date().toString()
+                }
+                await axios.delete(url, {headers, data});
+                listarClientes()
+            }
+        }
+        catch (error) {
+            console.log(error);
+        }
+    }
 
     return (
         <>
@@ -62,11 +89,11 @@ const Tabla = () => {
                                         <td>{clientes.telefono}</td>
                                         
                                         <td className='py-2 text-center'>
-                                            <MdNoteAdd className="h-7 w-7 text-slate-800 cursor-pointer inline-block mr-2" />
+                                            <MdNoteAdd className="h-7 w-7 text-slate-800 cursor-pointer inline-block mr-2" onClick={() => navigate(`/dashboard/visualizarCliente/${clientes._id}`)} />
 
-                                            <MdInfo className="h-7 w-7 text-slate-800 cursor-pointer inline-block mr-2" />
+                                            <MdInfo className="h-7 w-7 text-slate-800 cursor-pointer inline-block mr-2" onClick={() => navigate(`/dashboard/actualizarCliente/${clientes._id}`)}     />
 
-                                            <MdDeleteForever className="h-7 w-7 text-red-900 cursor-pointer inline-block" />
+                                            <MdDeleteForever className="h-7 w-7 text-red-900 cursor-pointer inline-block" onClick={() => { handleDelete(clientes._id) }} />
                                         </td>
                                     </tr>
                                 ))
@@ -80,4 +107,4 @@ const Tabla = () => {
     )
 }
 
-export default Tabla
+export default TablaClientes
