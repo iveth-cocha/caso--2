@@ -1,6 +1,7 @@
 import React from 'react'
 import TablaClientes from '../componets/TablaClientes'
 import { useNavigate } from 'react-router-dom'
+import Nombres from '../componets/Nombres';
 
 const Clientes = () => {
    
@@ -30,6 +31,7 @@ const Clientes = () => {
             </div>
             
             <TablaClientes/>
+            <Nombres/>
             
         </div>
 
